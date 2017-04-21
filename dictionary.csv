@@ -1,0 +1,123 @@
+import sys
+
+dictionary = {
+
+    'function': ['structuring element in programming languages to group a set of statements \
+so they can be utilized more than once in a program',
+                 'http://www.python-course.eu/python3_functions.php'],
+    'parameter': ['a variable which is part of the method’s signature (method declaration)',
+                  'http://stackoverflow.com/questions/1788923/parameter-vs-argument'],
+    'argument': ['an expression used when calling the method',
+                 'http://stackoverflow.com/questions/1788923/parameter-vs-argument'],
+    'variable': ['a way of referring to a memory location used by a computer program, \
+it can be seen as a container to store a certain value',
+                 'http://www.python-course.eu/variables.php'],
+    'dictionary': ['an unordered collection of items, it has a key and values',
+                   'https://www.programiz.com/python-programming/dictionary'],
+    'tuple': ['a tuple is similar to a list, the difference between both is that we cannot change \
+the elements of a tuple once it is assigned whereas in a list, elements can be changed',
+              'https://www.programiz.com/python-programming/tuple'],
+    'ASCII table': ['American Standard Code for Information Interchange, it is a 7-bites character encoding \
+standard that represent text in computers, telecommunications equipment, and other devices',
+                    'https://en.wikipedia.org/wiki/ASCII'],
+    'module': ['independent, separated part of program that contains everything necessary \
+to execute only one aspect of the desired functionality',
+               'https://en.wikipedia.org/wiki/Modular_programming'],
+    'compiler': ['Compiler is a program that translates source code into object code, \
+it works, looking at the entire piece of source code and collecting and reorganizing the instructions',
+                 'http://www.webopedia.com/TERM/C/compiler.html'],
+    'terminal': ['a CLI (command line interface), where you type commands to tell the computer what to do',
+                 'https://help.ubuntu.com/community/UsingTheTerminal'],
+    'subroutine': ['a sequence of program instructions that perform a specific task',
+                   'https://en.wikipedia.org/wiki/Subroutine'],
+    'debugger': ['enables you to step through JavaScript code and examine or modify its state \
+to help track down bugs',
+                 'https://developer.mozilla.org/en-US/docs/Tools/Debugger'],
+    'script': ['a computer program written in particular programming language',
+               'https://en.wikipedia.org/wiki/Script'],
+    'iteration': ['processing over each value of a list or tuple in turn',
+                  'http://python-textbok.readthedocs.io/en/1.0/Loop_Control_Statements.html#iterables-iterators-and-generators'],
+    'IDE': ['Integrated Development Environment - it is a computer software that is designed \
+to make programer\'s life a bit easier - it speeds up the process of creating program by providing graphical \
+interface, syntax highlighting, support for variuos languages and third party softwares (i.e. GIT)',
+            'https://en.wikipedia.org/wiki/Integrated_development_environment'],
+}
+
+
+def search():  # searching in dictionary by keyword
+    my_key = input("Type the definition you are looking for: ")
+    for key in dictionary:
+        if my_key == key:
+            print(
+                key,
+                '-',
+                dictionary[key][0],
+                '\nSource: ',
+                dictionary[key][1])
+            break
+    else:
+        print("There's no such key!")
+
+
+def add():  # adding a new position to our dict.
+    key_new = input('Please add a new key to your dictionary: ')
+    explanation = input('Please add an explanation to your key: ')
+    source = input("Please add a source to your phrase: ")
+    yes_no = input("Do you want to save your changes? (y/n): ")
+    if yes_no.upper() == 'Y':
+        # adding a new position to our dict.
+        dictionary[key_new] = [explanation, source]
+    else:
+        print('Make up your mind! ;/')
+
+
+def sorting():  # sorting keys alphabetically
+    for key in sorted(dictionary):
+        print(key)
+
+
+def search_by_keyletter():  # searching by keyletter
+    keyletter = input("\nSearch definitions by first letter of appellation: ")
+    while len(keyletter) > 1:
+        keyletter = input(
+            "Type only the first letter of a phrase you looking for: ")
+    for key in dictionary:
+        if key.startswith(keyletter.lower()):
+            print (key, )
+            break
+    else:
+        print("There's no such appellation.")
+
+
+while True:
+    print("""\nDictionary for a little programmer:
+    1) search explanation by appellation
+    2) add new definition
+    3) show all appellations alphabetically
+    4) show available definitions by first letter of appellation
+    0) exit""")
+
+    menu = input("Please choose the option from the menu:")
+    try:
+        menu = int(menu)
+        while (menu < 0 or menu > 4):
+            menu = int(input("\nPlease select an option:"))
+
+        if menu == 0:
+            print('Till the next time!')
+            exit()
+        elif menu == 1:
+            search()
+        elif menu == 2:
+            add()
+        elif menu == 3:
+            sorting()
+        elif menu == 4:
+            search_by_keyletter()
+        niewiem = input("Are you still going to use the dictionary? (yes/no)")
+        if niewiem.lower() == 'y' or niewiem.lower() == 'yes':
+            continue
+        else:
+            exit()
+    except ValueError:
+        continue
