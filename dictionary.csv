@@ -40,8 +40,7 @@ to help track down bugs',
     'IDE': ['Integrated Development Environment - it is a computer software that is designed \
 to make programer\'s life a bit easier - it speeds up the process of creating program by providing graphical \
 interface, syntax highlighting, support for variuos languages and third party softwares (i.e. GIT)',
-            'https://en.wikipedia.org/wiki/Integrated_development_environment'],
-}
+            'https://en.wikipedia.org/wiki/Integrated_development_environment']}
 
 
 def search():  # searching in dictionary by keyword
